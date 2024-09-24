@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Dataro</base>
+  <class>DataroScore</class>
+  <name>civicrm_dataro_score</name>
+  <comment>Dataro Propensity Scores</comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique DataroScore ID</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>contact_id</name>
+    <type>int unsigned</type>
+    <comment>FK to Contact</comment>
+  </field>
+  <foreignKey>
+    <name>contact_id</name>
+    <table>civicrm_contact</table>
+    <key>id</key>
+    <onDelete>CASCADE</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>model_name_id</name>
+    <title>Model Name</title>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>ID of model name</comment>
+    <pseudoconstant>
+      <optionGroupName>dataro_model_name</optionGroupName>
+    </pseudoconstant>
+    <html>
+      <type>Select</type>
+    </html>
+  </field>
+
+  <index>
+    <name>index_unique_contact_id_model_name_id</name>
+    <fieldName>contact_id</fieldName>
+    <fieldName>model_name_id</fieldName>
+    <unique>true</unique>
+  </index>
+
+  <field>
+    <name>model_score</name>
+    <type>decimal</type>
+    <length>7,6</length>
+    <required>false</required>
+    <comment>Propensity Score</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+
+  <field>
+    <name>model_rank</name>
+    <type>int unsigned</type>
+    <required>false</required>
+    <comment>Propensity Rank</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+
+  <field>
+    <name>created_date</name>
+    <type>timestamp</type>
+    <comment></comment>
+    <required>true</required>
+    <default>CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+  <field>
+    <name>modified_date</name>
+    <title>Modified Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <default>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+</table>

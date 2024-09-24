@@ -1,0 +1,13 @@
+{
+    "type": "search",
+    "title": "Dataro Scores",
+    "placement": [
+        "contact_summary_tab"
+    ],
+    "icon": "fa-list-alt",
+    "server_route": "",
+    "permission": [
+        "access CiviCRM"
+    ],
+    "permission_operator": "AND"
+}
