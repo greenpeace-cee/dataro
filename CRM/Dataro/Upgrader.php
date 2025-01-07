@@ -26,6 +26,8 @@ class CRM_Dataro_Upgrader extends CRM_Extension_Upgrader_Base {
       UNIQUE KEY `index_unique_contact_id` (`contact_id`),
       CONSTRAINT `FK_civicrm_dataro_property_contact_id` FOREIGN KEY (`contact_id`) REFERENCES `civicrm_contact` (`id`) ON DELETE CASCADE
     );");
+    $logging = new CRM_Logging_Schema();
+    $logging->fixSchemaDifferences();
     return TRUE;
   }
 

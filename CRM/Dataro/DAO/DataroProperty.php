@@ -17,4 +17,22 @@ class CRM_Dataro_DAO_DataroProperty extends CRM_Dataro_DAO_Base {
    */
   public static $_tableName = 'civicrm_dataro_property';
 
+  /**
+   * Returns foreign keys and entity references.
+   *
+   * This is a hack to workaround issues with FKs using the schema mixin
+   * Can be removed after Civi 5.69
+   *
+   * @return array
+   *   [CRM_Core_Reference_Interface]
+   */
+  public static function getReferenceColumns() {
+    if (!isset(Civi::$statics[__CLASS__]['links'])) {
+      Civi::$statics[__CLASS__]['links'] = static::createReferenceColumns(__CLASS__);
+      Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName(), 'contact_id', 'civicrm_contact', 'id');
+      CRM_Core_DAO_AllCoreTables::invoke(__CLASS__, 'links_callback', Civi::$statics[__CLASS__]['links']);
+    }
+    return Civi::$statics[__CLASS__]['links'];
+  }
+
 }

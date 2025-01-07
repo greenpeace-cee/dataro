@@ -6,8 +6,8 @@ return [
   'table' => 'civicrm_dataro_property',
   'class' => 'CRM_Dataro_DAO_DataroProperty',
   'getInfo' => fn() => [
-    'title' => E::ts('DataroProperty'),
-    'title_plural' => E::ts('DataroProperties'),
+    'title' => E::ts('Dataro Property'),
+    'title_plural' => E::ts('Dataro Properties'),
     'description' => E::ts('Dataro recommendation properties'),
     'log' => TRUE,
   ],
