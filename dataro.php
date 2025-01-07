@@ -38,6 +38,16 @@ function dataro_civicrm_permission(array &$permissions): void {
   ];
   $permissions['access dataro scores'] = [
     'label' => E::ts('Access Dataro Scores'), // Required
-    'description' => E::ts('Access Dataro Scores'),
+    'description' => E::ts('Access Dataro Scores and Properties'),
   ];
+}
+
+function dataro_civicrm_merge($type, &$data, $mainId = NULL, $otherId = NULL, $tables = NULL) {
+  if ($type == 'sqls') {
+    // remove UPDATE against civicrm_dataro_score and civicrm_dataro_property as
+    // it would fail due to the unique index on contact_id
+    $data = array_filter($data, function($sql) {
+      return strpos($sql, 'UPDATE civicrm_dataro_score') === FALSE && strpos($sql, 'UPDATE civicrm_dataro_property') === FALSE;
+    });
+  }
 }

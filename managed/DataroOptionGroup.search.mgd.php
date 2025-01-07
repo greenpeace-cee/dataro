@@ -38,6 +38,7 @@ return [
                 'activity_contacts',
                 'contract_cancel_reason',
                 'dataro_model_name',
+                'encounter_medium',
               ],
             ],
           ],
