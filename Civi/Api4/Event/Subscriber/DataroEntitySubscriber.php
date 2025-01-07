@@ -13,31 +13,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class DataroEntitySubscriber extends \Civi\Core\Service\AutoService implements EventSubscriberInterface {
 
   /**
-   * Register SearchDisplays of type 'entity'
-   *
-   * @param \Civi\Core\Event\GenericHookEvent $event
-   */
-  public static function onApiEntityTypes(GenericHookEvent $event): void {
-    $event->entities['DataroActivityContact'] = [
-      'name' => 'DataroActivityContact',
-      'title' => 'Dataro Activity Contact',
-      'title_plural' => 'Dataro Activity Contacts',
-      'description' => NULL,
-      'primary_key' => ['id'],
-      'type' => ['DAOEntity'],
-      'label_field' => NULL,
-      'searchable' => 'secondary',
-      'class' => DataroActivityContact::class,
-      'icon' => 'fa-search-plus',
-    ];
-  }
-
-  /**
    * @return array
    */
   public static function getSubscribedEvents() {
     return [
-      'civi.api4.entityTypes' => 'onApiEntityTypes',
       'civi.api.authorize' => [
         ['onApiAuthorize', 100],
       ],
