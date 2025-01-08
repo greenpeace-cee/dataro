@@ -25,6 +25,7 @@ return [
       'title' => E::ts('Contact ID'),
       'sql_type' => 'int unsigned',
       'input_type' => 'EntityRef',
+      'required' => TRUE,
       'description' => E::ts('FK to Contact'),
       'entity_reference' => [
         'entity' => 'Contact',
@@ -37,7 +38,6 @@ return [
       'title' => E::ts('Channel Recommendation'),
       'sql_type' => 'int unsigned',
       'input_type' => 'Select',
-      'required' => TRUE,
       'description' => E::ts('Recommended ask channel'),
       'pseudoconstant' => [
         'option_group_name' => 'encounter_medium',

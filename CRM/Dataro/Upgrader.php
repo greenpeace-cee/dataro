@@ -17,8 +17,8 @@ class CRM_Dataro_Upgrader extends CRM_Extension_Upgrader_Base {
     $this->ctx->log->info('Creating civicrm_dataro_property');
     CRM_Core_DAO::executeQuery("CREATE TABLE IF NOT EXISTS `civicrm_dataro_property` (
       `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Unique DataroProperty ID',
-      `contact_id` int(10) unsigned DEFAULT NULL COMMENT 'FK to Contact',
-      `channel_recommendation` int(10) unsigned NOT NULL COMMENT 'Recommended ask channel',
+      `contact_id` int(10) unsigned NOT NULL COMMENT 'FK to Contact',
+      `channel_recommendation` int(10) unsigned DEFAULT NULL COMMENT 'Recommended ask channel',
       `ask_amount` decimal(20,2) DEFAULT NULL COMMENT 'Recommended ask amount',
       `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
       `modified_date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
