@@ -51,3 +51,19 @@ function dataro_civicrm_merge($type, &$data, $mainId = NULL, $otherId = NULL, $t
     });
   }
 }
+
+function dataro_civicrm_selectWhereClause($entity, &$clauses, $userId, $conditions) {
+  if (in_array($entity, ['DataroScore', 'DataroProperty'])) {
+    if (!CRM_Core_Permission::check('access dataro scores', $userId)) {
+      return;
+    }
+    if (isset($clauses['contact_id'])) {
+      // Remove ACL checks on contact_id. This allows direct access to
+      // DataroProperty/DataroScore.get APIs as well as .save APIs making use of
+      // "match":["contact_id"] for restricted users.
+      // This does *NOT* provide access to the Contact entity directly through
+      // joins or similar
+      unset($clauses['contact_id']);
+    }
+  }
+}
